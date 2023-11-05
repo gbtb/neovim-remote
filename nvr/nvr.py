@@ -112,6 +112,7 @@ class Nvr():
 
         self.server.command('augroup nvr')
         self.server.command(f'autocmd BufDelete <buffer> silent! call rpcnotify({chanid}, "BufDelete")')
+        self.server.command(f'autocmd TabClosed <buffer> silent! call rpcnotify({chanid}, "BufDelete")')
         self.server.command(f'autocmd VimLeave * if exists("v:exiting") && v:exiting > 0 | silent! call rpcnotify({chanid}, "Exit", v:exiting) | endif')
         self.server.command('augroup END')
 
